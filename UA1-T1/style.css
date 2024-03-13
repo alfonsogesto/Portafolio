@@ -1,0 +1,29 @@
+body {
+    background-color: #c39e6d;
+    font-family: 'Lexend Deca', sans-serif;
+    width: 800px;
+    margin: auto;
+    color: #2E475D;
+}
+
+
+.btn {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #0066CC 0%, #2E475D 100%);
+    padding: 10px 30px;
+    border: 2px solid #0066cc;
+    border-radius: 50px;
+    transition: all 0.5s ease; 
+    cursor: pointer;
+}
+
+.btn:hover {
+    padding: 10px 50px;
+    transform: translateY(-5px);
+    background: linear-gradient(90deg, #0066CC 0%, #2E475D 100%);
+    color: #0066cc;
+    border-color: #0066cc;
+}

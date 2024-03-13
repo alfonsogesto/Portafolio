@@ -1,0 +1,11 @@
+#miID{ color: blue}
+.myClass{
+    color: lightcoral;
+}
+
+#secondID{ color:rgb(255, 80, 0);}
+.myClass{
+    color: lightcoral;
+}
+.otherClass{ font-size: 30px;
+}
