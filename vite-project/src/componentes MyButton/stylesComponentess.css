@@ -1,0 +1,25 @@
+#root {
+    font-family: arial;
+    text-align: center;
+  }
+  
+  .MyButton {
+    justify-content: space-around;
+    display: flex;
+  }
+  
+  button.Verde {
+    align-content: center;
+    background-color: green;
+  }
+  
+  .Rojo {
+    align-content: center;
+    background-color: red;
+  }
+  
+  .Azul {
+    align-content: center;
+    background-color: blue;
+  }
+  

@@ -1,0 +1,18 @@
+#root {
+  font-family: arial;
+  text-align: center;
+}
+.Verde {
+  background-color: green;
+  color: white;
+}
+
+.Rojo {
+  background-color: red;
+  color: white;
+}
+
+.Azul {
+  background-color: blue;
+  color: white;
+}
