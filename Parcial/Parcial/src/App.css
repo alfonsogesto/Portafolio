@@ -1,0 +1,35 @@
+.Sports {
+  padding: 20px;
+}
+
+.Sports ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Sports li {
+  margin-bottom: 10px;
+  border: 2px solid #9ff;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.participants-info {
+  margin-left: 20px;
+}
+
+.participants-info strong {
+  font-size: 18px;
+}
+
+.addSport{
+  background-color: blue;
+  color: white
+}
+
+.deleteSport{
+  background-color: red;
+  color: white
+}
