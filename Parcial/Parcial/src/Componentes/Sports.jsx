@@ -7,20 +7,23 @@ export function Sports() {
     const [name, setName] = useState('');
     const [details, setDetails] = useState('');
     const [participants, setParticipants] = useState([]);
+    const [categories, setCategories] = useState()
 
     const addSport = () => {
-        if (name && details && participants.length > 0) {
+        if (name && details && participants.length && categories > 0) {
             setSports([...sports, {
 
                 sportName: name,
                 sportDetails: details,
-                sportParticipants: participants
-            
+                sportParticipants: participants,
+                sportCategories: categories
+
             }]);
 
             setName('');
             setDetails('');
             setParticipants([]);
+            setCategories('');
 
         } else {
             alert('Falta información o la misma no esta disponible ahora.');
@@ -62,6 +65,15 @@ export function Sports() {
                     onChange={e => setParticipants(e.target.value.split(','))}
                 />
             </div>
+            <div>
+                <label htmlFor='cateogries'>Categories:</label>
+                <input
+                    type='text'
+                    id='categories'
+                    value={categories}
+                    onChange={e => setCategories(e.target.value.split(','))}
+                />
+            </div>
             <button onClick={addSport}>Add Sport</button>
             <ul>
                 {sports.map((sport, index) => (
@@ -70,6 +82,7 @@ export function Sports() {
                         sportName={sport.sportName}
                         sportDetails={sport.sportDetails}
                         sportParticipants={sport.sportParticipants}
+                        sportCategories={sport.sportCategories}
                     />
                      <button onClick={() => deleteSport(index)}>Delete Sport</button>
                 </li>

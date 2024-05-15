@@ -15,6 +15,9 @@ export function SportsInfo ({sportName, sportDetails, sportParticipants}){
                 <div className="participants-info">
                     <strong>{sportParticipants}</strong>
                 </div>
+                <div className="categories-info">
+                    <strong>{sportCategories}</strong>
+                </div>
             </header>
         </article>
     )
