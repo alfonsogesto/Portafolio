@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Sports } from "./Sports";
 
-export function SportsInfo ({sportName, sportDetails, sportParticipants}){
+export function SportsInfo ({sportName, sportDetails, sportParticipants, sportCategories}){
 
     const sportId = sportName;
     return(
@@ -16,7 +16,7 @@ export function SportsInfo ({sportName, sportDetails, sportParticipants}){
                     <strong>{sportParticipants}</strong>
                 </div>
                 <div className="categories-info">
-                    <strong>{sportCategories}</strong>
+                    <h1>{sportCategories}</h1>
                 </div>
             </header>
         </article>
