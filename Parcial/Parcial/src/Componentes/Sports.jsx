@@ -10,16 +10,20 @@ export function Sports() {
     const [categories, setCategories] = useState()
 
     const addSport = () => {
-        if (name && details && participants.length && categories > 0) {
-            setSports([...sports, {
-
+        if (name && details && participants.length && categories) {
+            fetch("http://localhost:3000/api/games", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            
                 sportName: name,
                 sportDetails: details,
                 sportParticipants: participants,
                 sportCategories: categories
-
-            }]);
-
+            .then(data => setSports(data))
+            });
+            
             setName('');
             setDetails('');
             setParticipants([]);
@@ -27,6 +31,7 @@ export function Sports() {
 
         } else {
             alert('Falta información o la misma no esta disponible ahora.');
+            
         }
     };
 
@@ -36,6 +41,15 @@ export function Sports() {
         setSports(newSports);
     };
     
+    useEffect(() => {
+        fetch("http://localhost:3000/api/games") 
+          .then(response => response.json())
+          .then(data => setSports(data))
+          .catch(error => console.error('Error fetching data:', error));
+      }, [])
+ 
+
+
     return (
         <section className='SportList'>
             <div>
@@ -90,12 +104,4 @@ export function Sports() {
             </ul>
         </section>
     );
-
-    useEffect(() => {
-        fetch("") 
-          .then(response => response.json())
-          .then(data => setSports(data))
-          .catch(error => console.error('Error fetching data:', error));
-      });
-
 }
