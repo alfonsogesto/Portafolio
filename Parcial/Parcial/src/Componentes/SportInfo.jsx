@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Sports } from "./Sports";
 
 export function SportsInfo ({sportName, sportDetails, sportParticipants, sportCategories}){
 

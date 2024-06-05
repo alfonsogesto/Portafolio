@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SportsInfo } from "./SportInfo";
 import MyButton from "./Buttons";
 
@@ -7,7 +7,7 @@ export function Sports() {
     const [name, setName] = useState('');
     const [details, setDetails] = useState('');
     const [participants, setParticipants] = useState([]);
-    const [categories, setCategories] = useState()
+    const [categories, setCategories] = useState('');
 
     const addSport = () => {
         if (name && details && participants.length && categories) {
@@ -16,22 +16,25 @@ export function Sports() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-            
-                sportName: name,
-                sportDetails: details,
-                sportParticipants: participants,
-                sportCategories: categories
-            .then(data => setSports(data))
-            });
+                body: JSON.stringify({
+                    name: name,
+                    details: details,
+                    participants: participants,
+                    categories: categories
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                setSports([...sports, data]);
+            })
+            .catch(error => console.error('Error adding sport:', error));
             
             setName('');
             setDetails('');
             setParticipants([]);
             setCategories('');
-
         } else {
-            alert('Falta información o la misma no esta disponible ahora.');
-            
+            alert('Falta información o la misma no está disponible ahora.');
         }
     };
 
@@ -46,9 +49,7 @@ export function Sports() {
           .then(response => response.json())
           .then(data => setSports(data))
           .catch(error => console.error('Error fetching data:', error));
-      }, [])
- 
-
+      }, []);
 
     return (
         <section className='SportList'>
@@ -57,8 +58,8 @@ export function Sports() {
                 <input
                     type='text'
                     id='title'
-                    value={title}
-                    onChange={e => setSport(e.target.value)}
+                    value={name}
+                    onChange={e => setName(e.target.value)}
                 />
             </div>
             <div>
@@ -92,14 +93,14 @@ export function Sports() {
             <ul>
                 {sports.map((sport, index) => (
                     <li key={index}>
-                    <Sports
-                        sportName={sport.sportName}
-                        sportDetails={sport.sportDetails}
-                        sportParticipants={sport.sportParticipants}
-                        sportCategories={sport.sportCategories}
-                    />
-                     <button onClick={() => deleteSport(index)}>Delete Sport</button>
-                </li>
+                        <SportsInfo
+                            sportName={sport.name}
+                            sportDetails={sport.details}
+                            sportParticipants={sport.participants}
+                            sportCategories={sport.categories}
+                        />
+                        <button onClick={() => deleteSport(index)}>Delete Sport</button>
+                    </li>
                 ))}
             </ul>
         </section>
